@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CH11 PIPELINE CALCULATION - 화공연구소 CELab</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="logo.jpg" alt="CELab Logo" class="logo">
+                    <span class="logo-text">화공연구소 CELab</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#modules" class="nav-link">모듈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#workflow" class="nav-link">워크플로우</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#quiz" class="nav-link">퀴즈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#resources" class="nav-link">참고자료</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <!-- 홈 섹션 -->
+        <section id="home" class="hero-section">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">CH11 PIPELINE CALCULATION</h1>
+                    <p class="hero-subtitle">화학 공정 엔지니어를 위한 파이프 사이징 완전 가이드</p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <i class="fas fa-book"></i>
+                            <span>4개 모듈</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-clock"></i>
+                            <span>22개 강의</span>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>실무 중심</span>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#modules" class="btn btn-primary">학습 시작하기</a>
+                        <a href="#workflow" class="btn btn-secondary">워크플로우 보기</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="pipeline-illustration">
+                        <div class="pipe-segment"></div>
+                        <div class="pipe-segment"></div>
+                        <div class="pipe-segment"></div>
+                        <div class="valve"></div>
+                        <div class="flow-arrow"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 모듈 개요 섹션 -->
+        <section id="modules" class="modules-section">
+            <div class="container">
+                <h2 class="section-title">학습 모듈</h2>
+                <p class="section-subtitle">5개의 체계적인 모듈로 파이프 사이징을 완전히 마스터하세요</p>
+                
+                <div class="modules-grid">
+                    <!-- 모듈 1 -->
+                    <div class="module-card" data-module="1">
+                        <div class="module-header">
+                            <div class="module-number">01</div>
+                            <h3 class="module-title">파이프 사이징 초기 단계</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">실제 화학 공정 엔지니어로서 단계별 라인 사이징 수행 방법을 학습합니다.</p>
+                            <ul class="module-topics">
+                                <li>플랜트 설계 작업 준비</li>
+                                <li>P&ID 및 라인 리스트 작성</li>
+                                <li>가스 처리 플랜트 파이프 라인 사이징</li>
+                            </ul>
+                            <div class="module-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">0% 완료</span>
+                            </div>
+                        </div>
+                        <div class="module-footer">
+                            <a href="module1.html" class="btn btn-outline">학습하기</a>
+                        </div>
+                    </div>
+
+                    <!-- 모듈 2 -->
+                    <div class="module-card" data-module="2">
+                        <div class="module-header">
+                            <div class="module-number">02</div>
+                            <h3 class="module-title">설계 기초 및 기준</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">표준, 지침, 재료 선택, 파이프 기초, 사이징 방법론을 학습합니다.</p>
+                            <ul class="module-topics">
+                                <li>표준과 지침 (API, NORSOC, EIA-IEGA)</li>
+                                <li>재료 선택 및 파이프 기초</li>
+                                <li>파이프 사이징 방법론</li>
+                            </ul>
+                            <div class="module-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">0% 완료</span>
+                            </div>
+                        </div>
+                        <div class="module-footer">
+                            <a href="module2.html" class="btn btn-outline">학습하기</a>
+                        </div>
+                    </div>
+
+                    <!-- 모듈 3 -->
+                    <div class="module-card" data-module="3">
+                        <div class="module-header">
+                            <div class="module-number">03</div>
+                            <h3 class="module-title">계산 입력 및 방법론</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">계산 입력, 직경 선택, 압력 강하 계산을 학습합니다.</p>
+                            <ul class="module-topics">
+                                <li>계산 입력 및 방법론</li>
+                                <li>직경 선택 및 압력 강하</li>
+                                <li>액체, 증기, 2상 유동 계산</li>
+                            </ul>
+                            <div class="module-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">0% 완료</span>
+                            </div>
+                        </div>
+                        <div class="module-footer">
+                            <a href="module3.html" class="btn btn-outline">학습하기</a>
+                        </div>
+                    </div>
+
+                    <!-- 모듈 4 -->
+                    <div class="module-card" data-module="4">
+                        <div class="module-header">
+                            <div class="module-number">04</div>
+                            <h3 class="module-title">파이프 사이징 작업</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">플랜지 압력 등급, P&ID 정보, 라인 리스트 개발을 학습합니다.</p>
+                            <ul class="module-topics">
+                                <li>플랜지 압력 등급 선택</li>
+                                <li>P&ID 정보 및 라인 번호</li>
+                                <li>라인 리스트 개발</li>
+                            </ul>
+                            <div class="module-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">0% 완료</span>
+                            </div>
+                        </div>
+                        <div class="module-footer">
+                            <a href="module4.html" class="btn btn-outline">학습하기</a>
+                        </div>
+                    </div>
+
+                    <!-- 모듈 5 -->
+                    <div class="module-card" data-module="5">
+                        <div class="module-header">
+                            <div class="module-number">05</div>
+                            <h3 class="module-title">실습 및 종합 평가</h3>
+                        </div>
+                        <div class="module-content">
+                            <p class="module-description">실제 프로젝트를 통한 종합 실습과 평가를 통해 배관 설계 능력을 완성합니다.</p>
+                            <ul class="module-topics">
+                                <li>종합 실습 프로젝트</li>
+                                <li>종합 평가 및 검증</li>
+                                <li>향후 학습 방향</li>
+                            </ul>
+                            <div class="module-progress">
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 0%"></div>
+                                </div>
+                                <span class="progress-text">0% 완료</span>
+                            </div>
+                        </div>
+                        <div class="module-footer">
+                            <a href="module5.html" class="btn btn-outline">학습하기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 워크플로우 섹션 -->
+        <section id="workflow" class="workflow-section">
+            <div class="container">
+                <h2 class="section-title">파이프 사이징 워크플로우</h2>
+                <p class="section-subtitle">체계적인 파이프 사이징 프로세스를 한눈에 파악하세요</p>
+                <div class="workflow-instruction">
+                    <p><i class="fas fa-info-circle"></i> 각 단계를 클릭하면 해당 모듈의 상세 학습 페이지로 이동합니다.</p>
+                </div>
+                
+                <div class="workflow-container">
+                    <div class="workflow-chart">
+                        <div class="workflow-grid">
+                            <!-- 첫 번째 행: 프로젝트 초기 단계 -->
+                            <div class="workflow-step clickable" data-module="1">
+                                <div class="workflow-step-number">1</div>
+                                <h3 class="workflow-step-title">공정 설계 프로젝트 착수</h3>
+                                <p class="workflow-step-description">FEED(기본설계) 및 상세설계 요구사항 분석</p>
+                                <div class="workflow-module">모듈 1</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="1">
+                                <div class="workflow-step-number">2</div>
+                                <h3 class="workflow-step-title">공정 안전성 분석</h3>
+                                <p class="workflow-step-description">HAZOP, PHA, LOPA 등 안전성 평가</p>
+                                <div class="workflow-module">모듈 1</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="1">
+                                <div class="workflow-step-number">3</div>
+                                <h3 class="workflow-step-title">공정 플로우시트 작성</h3>
+                                <p class="workflow-step-description">PFD, P&ID 초안 작성 및 검토</p>
+                                <div class="workflow-module">모듈 1</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="1">
+                                <div class="workflow-step-number">4</div>
+                                <h3 class="workflow-step-title">공정 조건 정의</h3>
+                                <p class="workflow-step-description">운전조건, 설계조건, 비상조건 설정</p>
+                                <div class="workflow-module">모듈 1</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <!-- 두 번째 행: 설계 기준 및 재료 선택 -->
+                            <div class="workflow-step clickable" data-module="2">
+                                <div class="workflow-step-number">5</div>
+                                <h3 class="workflow-step-title">공정 설계 기준 적용</h3>
+                                <p class="workflow-step-description">ASME, API, ISO 등 국제 설계기준 적용</p>
+                                <div class="workflow-module">모듈 2</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="2">
+                                <div class="workflow-step-number">6</div>
+                                <h3 class="workflow-step-title">공정 유체 특성 분석</h3>
+                                <p class="workflow-step-description">물성치, 상변화, 부식성 분석</p>
+                                <div class="workflow-module">모듈 2</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="2">
+                                <div class="workflow-step-number">7</div>
+                                <h3 class="workflow-step-title">배관 재료 선정</h3>
+                                <p class="workflow-step-description">탄소강, 스테인리스강, 합금강 등</p>
+                                <div class="workflow-module">모듈 2</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="2">
+                                <div class="workflow-step-number">8</div>
+                                <h3 class="workflow-step-title">배관 규격 결정</h3>
+                                <p class="workflow-step-description">표준 직경, 두께 등급, 연결방식</p>
+                                <div class="workflow-module">모듈 2</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <!-- 세 번째 행: 공정 계산 및 설계 -->
+                            <div class="workflow-step clickable" data-module="3">
+                                <div class="workflow-step-number">9</div>
+                                <h3 class="workflow-step-title">공정 계산 입력 데이터</h3>
+                                <p class="workflow-step-description">유량, 압력, 온도, 물성치 수집</p>
+                                <div class="workflow-module">모듈 3</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="3">
+                                <div class="workflow-step-number">10</div>
+                                <h3 class="workflow-step-title">배관 직경 설계</h3>
+                                <p class="workflow-step-description">유속 제한, 압력강하 기준 적용</p>
+                                <div class="workflow-module">모듈 3</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="3">
+                                <div class="workflow-step-number">11</div>
+                                <h3 class="workflow-step-title">압력강하 계산</h3>
+                                <p class="workflow-step-description">단상/2상 유동, 마찰계수 계산</p>
+                                <div class="workflow-module">모듈 3</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="3">
+                                <div class="workflow-step-number">12</div>
+                                <h3 class="workflow-step-title">배관 두께 설계</h3>
+                                <p class="workflow-step-description">설계압력, 온도, 부식여유 고려</p>
+                                <div class="workflow-module">모듈 3</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <!-- 네 번째 행: 공정 문서화 및 완료 -->
+                            <div class="workflow-step clickable" data-module="4">
+                                <div class="workflow-step-number">13</div>
+                                <h3 class="workflow-step-title">플랜지 등급 선정</h3>
+                                <p class="workflow-step-description">압력등급, 온도등급, 재료 등급</p>
+                                <div class="workflow-module">모듈 4</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="4">
+                                <div class="workflow-step-number">14</div>
+                                <h3 class="workflow-step-title">P&ID 상세 정보</h3>
+                                <p class="workflow-step-description">라인번호, 사양표기, 계기정보</p>
+                                <div class="workflow-module">모듈 4</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="4">
+                                <div class="workflow-step-number">15</div>
+                                <h3 class="workflow-step-title">라인 리스트 작성</h3>
+                                <p class="workflow-step-description">배관 사양서, 재료 명세서</p>
+                                <div class="workflow-module">모듈 4</div>
+                                <div class="workflow-arrow"></div>
+                            </div>
+                            
+                            <div class="workflow-step clickable" data-module="5">
+                                <div class="workflow-step-number">16</div>
+                                <h3 class="workflow-step-title">종합 실습 및 평가</h3>
+                                <p class="workflow-step-description">실제 프로젝트 실습, 종합 평가</p>
+                                <div class="workflow-module">모듈 5</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 퀴즈 섹션 -->
+        <section id="quiz" class="quiz-section">
+            <div class="container">
+                <h2 class="section-title">학습 퀴즈</h2>
+                <p class="section-subtitle">학습한 내용을 확인하고 이해도를 테스트하세요</p>
+                
+                <div class="quiz-container">
+                    <div class="quiz-header">
+                        <h3>파이프 사이징 기초 퀴즈</h3>
+                        <div class="quiz-progress">
+                            <span class="current-question">1</span> / <span class="total-questions">10</span>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-question">
+                        <h4>질문 1: 파이프 사이징에서 가장 중요한 기준은 무엇인가요?</h4>
+                        <div class="quiz-options">
+                            <label class="option">
+                                <input type="radio" name="q1" value="a">
+                                <span>A. 비용</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="b">
+                                <span>B. 압력 강하</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="c">
+                                <span>C. 유속</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="d">
+                                <span>D. 재료</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-navigation">
+                        <button class="btn btn-outline" id="prevBtn" disabled>이전</button>
+                        <button class="btn btn-primary" id="nextBtn">다음</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 참고자료 섹션 -->
+        <section id="resources" class="resources-section">
+            <div class="container">
+                <h2 class="section-title">참고자료</h2>
+                <p class="section-subtitle">파이프 사이징에 필요한 모든 기준과 문서</p>
+                
+                <div class="resources-grid">
+                    <div class="resource-category">
+                        <h3>국제 표준</h3>
+                        <ul class="resource-list">
+                            <li>API (American Petroleum Institute)</li>
+                            <li>NORSOC (Norwegian Society)</li>
+                            <li>EIA-IEGA (European Industry Association)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-category">
+                        <h3>회사 내부 지침</h3>
+                        <ul class="resource-list">
+                            <li>Petrobras N0076</li>
+                            <li>ADENOC AGES-GL08001</li>
+                            <li>회사별 내부 표준</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="resource-category">
+                        <h3>설계 문서</h3>
+                        <ul class="resource-list">
+                            <li>P&ID (배관 및 계기 다이어그램)</li>
+                            <li>라인 리스트</li>
+                            <li>재료 명세서</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.jpg" alt="CELab Logo" class="logo">
+                    <span class="logo-text">화공연구소 CELab</span>
+                </div>
+                <div class="footer-info">
+                    <p>&copy; 2024 화공연구소 CELab. All rights reserved.</p>
+                    <p>CH11 PIPELINE CALCULATION 강의 자료</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
