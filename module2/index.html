@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모듈 2: 설계 기초 및 기준 - 화공연구소 CELab</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .module-detail-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .module-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .module-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .module-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .lesson-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .lesson-header {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .lesson-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .lesson-duration {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .lesson-content {
+            padding: 2rem;
+        }
+        
+        .lesson-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        
+        .key-points {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .key-points h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .key-points ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .key-points li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .key-points li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .lesson-objectives {
+            background: #e8f4fd;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .lesson-objectives h4 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .lesson-objectives ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .lesson-objectives li {
+            padding: 0.3rem 0;
+            color: #555;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+        
+        .back-button:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        
+        .progress-indicator {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .progress-indicator h3 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .progress-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .progress-bar {
+            flex: 1;
+            height: 10px;
+            background: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            font-weight: 600;
+            color: #667eea;
+        }
+        
+        .formula-box {
+            background: #f8f9fa;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+        
+        .formula-box h4 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .formula {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
+            margin: 1rem 0;
+        }
+        
+        .formula-explanation {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 1rem;
+        }
+        
+        /* 시각화 자료 스타일 */
+        .visualization-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #667eea;
+        }
+        
+        .visualization-section h4 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        
+        .process-flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .process-step {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .process-step h5 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .process-step p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .technical-diagram {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .technical-diagram h5 {
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .diagram-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px dashed #667eea;
+        }
+        
+        .calculation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .calculation-table th,
+        .calculation-table td {
+            padding: 0.8rem;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .calculation-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .calculation-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        /* 시각화 자료 스타일 */
+        .visualization-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #667eea;
+        }
+        
+        .visualization-section h4 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+        
+        .process-flow-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .process-step {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .step-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .process-step h5 {
+            color: #333;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .process-step p {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .flow-arrow {
+            font-size: 1.5rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .technical-diagram {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border: 1px solid #dee2e6;
+        }
+        
+        .technical-diagram h5 {
+            color: #333;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .diagram-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 2px dashed #667eea;
+        }
+        
+        /* 강의대본 모달 스타일 */
+        .transcript-section {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #eee;
+        }
+        
+        .transcript-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .transcript-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+        
+        .transcript-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .transcript-modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .transcript-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .transcript-title {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .transcript-close {
+            color: #aaa;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .transcript-close:hover {
+            color: #333;
+        }
+        
+        .transcript-content {
+            line-height: 1.8;
+            color: #555;
+        }
+        
+        .transcript-content h4 {
+            color: #667eea;
+            margin: 2rem 0 1rem 0;
+            font-size: 1.2rem;
+        }
+        
+        .transcript-content p {
+            margin-bottom: 1rem;
+        }
+        
+        .transcript-content ul {
+            margin: 1rem 0;
+            padding-left: 2rem;
+        }
+        
+        .transcript-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <img src="images/logo.jpg" alt="CELab Logo" class="logo">
+                    <span class="logo-text">화공연구소 CELab</span>
+                </div>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#modules" class="nav-link">모듈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#workflow" class="nav-link">워크플로우</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#quiz" class="nav-link">퀴즈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#resources" class="nav-link">참고자료</a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="main-content">
+        <div class="module-detail-container">
+            <!-- 뒤로가기 버튼 -->
+            <a href="index.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                모듈 목록으로 돌아가기
+            </a>
+            
+            <!-- 모듈 헤더 -->
+            <div class="module-header">
+                <h1 class="module-title">모듈 2: 설계 기초 및 기준</h1>
+                <p class="module-subtitle">표준, 지침, 재료 선택, 파이프 기초, 사이징 방법론을 학습합니다</p>
+            </div>
+            
+            <!-- 진행률 표시 -->
+            <div class="progress-indicator">
+                <h3>학습 진행률</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 0%"></div>
+                    </div>
+                    <span class="progress-text">0% 완료</span>
+                </div>
+            </div>
+            
+            <!-- 강의 1: 공정 설계 기준 적용 -->
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <h3 class="lesson-title">01. 공정 설계 기준 적용</h3>
+                    <p class="lesson-duration">강의 시간: 40분</p>
+                </div>
+                <div class="lesson-content">
+                    <p class="lesson-description">
+                        배관 설계에서 공정 설계 기준은 매우 중요한 역할을 합니다. 이 강의에서는 정보의 우선순위를 
+                        이해하고, 계약서, 회사 내부 표준/지침, 코드의 관계를 학습합니다. 또한 ASME(미국), API(북미), 
+                        ISO(국제) 등 산업별 표준과 화공연구소-셀럽 내부 지침을 살펴봅니다.
+                    </p>
+                    
+                    <!-- 시각화 자료 -->
+                    <div class="visualization-section">
+                        <h4>📋 공정 설계 기준 우선순위</h4>
+                        <div class="process-flow-diagram">
+                            <div class="process-step">
+                                <div class="step-icon">📄</div>
+                                <h5>계약서</h5>
+                                <p>최우선 기준</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="process-step">
+                                <div class="step-icon">🏢</div>
+                                <h5>회사 내부 표준</h5>
+                                <p>내부 절차</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="process-step">
+                                <div class="step-icon">⚖️</div>
+                                <h5>국제 코드</h5>
+                                <p>법적 요구사항</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="key-points">
+                        <h4>핵심 학습 포인트</h4>
+                        <ul>
+                            <li>정보 우선순위: 계약서 > 회사 내부 표준 > 코드</li>
+                            <li>ASME (American Society of Mechanical Engineers) 표준</li>
+                            <li>API (American Petroleum Institute) 표준</li>
+                            <li>ISO (International Organization for Standardization) 표준</li>
+                            <li>화공연구소-셀럽 내부 지침</li>
+                            <li>공정 설계 기준 적용 방법론</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 시각화 자료 -->
+                    <div class="visualization-section">
+                        <h4>📋 공정 설계 기준 우선순위</h4>
+                        <div class="process-flow-diagram">
+                            <div class="process-step">
+                                <div class="step-icon">📄</div>
+                                <h5>계약서</h5>
+                                <p>최우선 기준</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="process-step">
+                                <div class="step-icon">🏢</div>
+                                <h5>회사 내부 표준</h5>
+                                <p>내부 절차</p>
+                            </div>
+                            <div class="flow-arrow">→</div>
+                            <div class="process-step">
+                                <div class="step-icon">⚖️</div>
+                                <h5>국제 코드</h5>
+                                <p>법적 요구사항</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 기술 다이어그램 -->
+                    <div class="technical-diagram">
+                        <h5>🏭 국제 설계 기준 비교표</h5>
+                        <div class="diagram-content">
+                            <table class="calculation-table">
+                                <thead>
+                                    <tr>
+                                        <th>기준</th>
+                                        <th>적용 분야</th>
+                                        <th>주요 특징</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>ASME B31.3</td>
+                                        <td>화학공정 배관</td>
+                                        <td>압력 배관 설계</td>
+                                    </tr>
+                                    <tr>
+                                        <td>API 570</td>
+                                        <td>석유화학</td>
+                                        <td>배관 검사 및 수리</td>
+                                    </tr>
+                                    <tr>
+                                        <td>ISO 15649</td>
+                                        <td>국제 표준</td>
+                                        <td>배관 시스템 설계</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="lesson-objectives">
+                        <h4>학습 목표</h4>
+                        <ul>
+                            <li>배관 설계에서 공정 설계 기준의 중요성을 이해할 수 있다</li>
+                            <li>정보의 우선순위를 정확히 파악할 수 있다</li>
+                            <li>주요 국제 설계 기준들을 구분하고 적용할 수 있다</li>
+                            <li>화공연구소-셀럽 내부 지침을 이해하고 활용할 수 있다</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- 강의대본 버튼 -->
+                    <div class="transcript-section">
+                        <button class="btn btn-outline transcript-btn" onclick="openTranscript('module2-lesson1')">
+                            <i class="fas fa-file-text"></i> 강의대본 보기
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 강의 2: 재료 선택 -->
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <h3 class="lesson-title">02. 재료 선택</h3>
+                    <p class="lesson-duration">강의 시간: 35분</p>
+                </div>
+                <div class="lesson-content">
+                    <p class="lesson-description">
+                        파이프 재료 선택은 유체의 특성, 운전 조건, 환경 요인을 고려하여 이루어집니다. 
+                        이 강의에서는 다양한 재료의 특성과 선택 기준을 학습하고, 부식, 온도, 압력 등 
+                        다양한 요인을 고려한 재료 선택 방법론을 이해합니다.
+                    </p>
+                    
+                    <div class="key-points">
+                        <h4>핵심 학습 포인트</h4>
+                        <ul>
+                            <li>재료 선택 기준 및 방법론</li>
+                            <li>유체 특성에 따른 재료 선택</li>
+                            <li>운전 조건 (온도, 압력) 고려</li>
+                            <li>부식 및 환경 요인 분석</li>
+                            <li>비용 효율성 평가</li>
+                            <li>재료 명세서 작성</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-objectives">
+                        <h4>학습 목표</h4>
+                        <ul>
+                            <li>파이프 재료 선택의 기본 원칙을 이해할 수 있다</li>
+                            <li>유체 특성과 운전 조건을 고려한 재료 선택을 할 수 있다</li>
+                            <li>부식 및 환경 요인을 분석하여 적절한 재료를 선택할 수 있다</li>
+                            <li>재료 명세서를 작성하고 검토할 수 있다</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 강의 3: 파이프 기초 -->
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <h3 class="lesson-title">03. 파이프 기초</h3>
+                    <p class="lesson-duration">강의 시간: 50분</p>
+                </div>
+                <div class="lesson-content">
+                    <p class="lesson-description">
+                        파이프의 기본 개념과 구조를 이해하는 것은 사이징의 기초가 됩니다. 
+                        이 강의에서는 파이프의 구조, 재료, 제조 방법, 표준 규격 등을 학습하고, 
+                        파이프의 기계적 특성과 유체 전달 특성을 이해합니다.
+                    </p>
+                    
+                    <div class="key-points">
+                        <h4>핵심 학습 포인트</h4>
+                        <ul>
+                            <li>파이프 구조 및 재료</li>
+                            <li>파이프 제조 방법</li>
+                            <li>표준 규격 및 사양</li>
+                            <li>파이프의 기계적 특성</li>
+                            <li>유체 전달 특성</li>
+                            <li>파이프 연결 방법</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-objectives">
+                        <h4>학습 목표</h4>
+                        <ul>
+                            <li>파이프의 기본 구조와 재료를 이해할 수 있다</li>
+                            <li>파이프 제조 방법과 표준 규격을 설명할 수 있다</li>
+                            <li>파이프의 기계적 특성과 유체 전달 특성을 분석할 수 있다</li>
+                            <li>파이프 연결 방법과 그 특성을 이해할 수 있다</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 강의 4: 파이프 사이징 -->
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <h3 class="lesson-title">04. 파이프 사이징</h3>
+                    <p class="lesson-duration">강의 시간: 55분</p>
+                </div>
+                <div class="lesson-content">
+                    <p class="lesson-description">
+                        파이프 사이징은 유체의 유량, 압력 강하, 유속 등을 고려하여 적절한 파이프 직경을 
+                        결정하는 과정입니다. 이 강의에서는 사이징의 기본 원칙, 계산 방법, 최적화 기법을 
+                        학습하고, 실제 사례를 통해 사이징 과정을 실습합니다.
+                    </p>
+                    
+                    <div class="key-points">
+                        <h4>핵심 학습 포인트</h4>
+                        <ul>
+                            <li>파이프 사이징 기본 원칙</li>
+                            <li>유량과 압력 강하 관계</li>
+                            <li>유속 제한 및 최적화</li>
+                            <li>사이징 계산 방법</li>
+                            <li>실제 사례 분석</li>
+                            <li>사이징 검증 및 최적화</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-objectives">
+                        <h4>학습 목표</h4>
+                        <ul>
+                            <li>파이프 사이징의 기본 원칙을 이해할 수 있다</li>
+                            <li>유량, 압력 강하, 유속의 관계를 분석할 수 있다</li>
+                            <li>사이징 계산 방법을 적용할 수 있다</li>
+                            <li>실제 사례를 통해 사이징 과정을 수행할 수 있다</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 강의 5: 파이프 두께 계산 -->
+            <div class="lesson-card">
+                <div class="lesson-header">
+                    <h3 class="lesson-title">05. 파이프 두께 계산</h3>
+                    <p class="lesson-duration">강의 시간: 60분</p>
+                </div>
+                <div class="lesson-content">
+                    <p class="lesson-description">
+                        파이프 두께 계산은 설계 압력, 설계 온도, 부식 여유, 제조 허용 오차 등을 고려하여 
+                        적절한 파이프 두께를 결정하는 과정입니다. 이 강의에서는 ASME B31.3 코드를 기반으로 
+                        한 두께 계산 방법을 학습하고, 실제 계산 예제를 통해 이해를 돕습니다.
+                    </p>
+                    
+                    <div class="formula-box">
+                        <h4>파이프 두께 계산 공식</h4>
+                        <div class="formula">
+                            t = (P × D) / (2 × S × E × F) + C
+                        </div>
+                        <div class="formula-explanation">
+                            t: 최소 두께, P: 설계 압력, D: 외경, S: 허용 응력, E: 용접 효율, F: 설계 계수, C: 부식 여유
+                        </div>
+                    </div>
+                    
+                    <div class="key-points">
+                        <h4>핵심 학습 포인트</h4>
+                        <ul>
+                            <li>ASME B31.3 코드 기반 두께 계산</li>
+                            <li>설계 압력 및 온도 고려</li>
+                            <li>부식 여유 및 제조 허용 오차</li>
+                            <li>용접 효율 및 설계 계수</li>
+                            <li>두께 계산 예제</li>
+                            <li>두께 검증 및 최적화</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="lesson-objectives">
+                        <h4>학습 목표</h4>
+                        <ul>
+                            <li>파이프 두께 계산의 기본 원칙을 이해할 수 있다</li>
+                            <li>ASME B31.3 코드를 적용하여 두께를 계산할 수 있다</li>
+                            <li>설계 압력, 온도, 부식 여유를 고려한 두께 계산을 할 수 있다</li>
+                            <li>실제 계산 예제를 통해 두께 계산 과정을 수행할 수 있다</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 강의대본 모달 창 -->
+    <div id="transcriptModal" class="transcript-modal">
+        <div class="transcript-modal-content">
+            <div class="transcript-header">
+                <h2 class="transcript-title" id="transcriptTitle">강의대본</h2>
+                <span class="transcript-close" onclick="closeTranscript()">&times;</span>
+            </div>
+            <div class="transcript-content" id="transcriptContent">
+                <!-- 강의대본 내용이 여기에 표시됩니다 -->
+            </div>
+        </div>
+    </div>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo.jpg" alt="CELab Logo" class="logo">
+                    <span class="logo-text">화공연구소 CELab</span>
+                </div>
+                <div class="footer-info">
+                    <p>&copy; 2024 화공연구소 CELab. All rights reserved.</p>
+                    <p>CH11 PIPELINE CALCULATION 강의 자료</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // 강의대본 데이터
+        const transcriptData = {
+            'module2-lesson1': {
+                title: '01. 공정 설계 기준 적용',
+                content: `
+                    <h4>📋 강의 개요</h4>
+                    <p>배관 설계에서 공정 설계 기준은 매우 중요한 역할을 합니다. 이 강의에서는 정보의 우선순위를 이해하고, 계약서, 회사 내부 표준/지침, 코드의 관계를 학습합니다.</p>
+                    
+                    <h4>🎯 학습 목표</h4>
+                    <p>ASME(미국), API(북미), ISO(국제) 등 산업별 표준과 화공연구소-셀럽 내부 지침을 살펴봅니다.</p>
+                    
+                    <h4>📚 주요 학습 내용</h4>
+                    <ul>
+                        <li>정보 우선순위: 계약서 > 회사 내부 표준 > 코드</li>
+                        <li>ASME (American Society of Mechanical Engineers) 표준</li>
+                        <li>API (American Petroleum Institute) 표준</li>
+                        <li>ISO (International Organization for Standardization) 표준</li>
+                        <li>화공연구소-셀럽 내부 지침</li>
+                        <li>공정 설계 기준 적용 방법론</li>
+                    </ul>
+                    
+                    <h4>🔧 실무 적용</h4>
+                    <p>이 강의를 통해 실제 화학공학 공정설계 엔지니어로서 다양한 국제 표준을 이해하고 적용할 수 있는 능력을 기를 수 있습니다.</p>
+                    
+                    <h4>📊 기술 자료</h4>
+                    <p>각 표준별로 적용 분야와 주요 특징을 비교 분석하여 실무에서 적절한 기준을 선택할 수 있도록 합니다.</p>
+                `
+            }
+        };
+        
+        // 강의대본 열기 함수
+        function openTranscript(lessonId) {
+            const modal = document.getElementById('transcriptModal');
+            const title = document.getElementById('transcriptTitle');
+            const content = document.getElementById('transcriptContent');
+            
+            if (transcriptData[lessonId]) {
+                title.textContent = transcriptData[lessonId].title;
+                content.innerHTML = transcriptData[lessonId].content;
+                modal.style.display = 'block';
+            }
+        }
+        
+        // 강의대본 닫기 함수
+        function closeTranscript() {
+            const modal = document.getElementById('transcriptModal');
+            modal.style.display = 'none';
+        }
+        
+        // 모달 외부 클릭 시 닫기
+        window.onclick = function(event) {
+            const modal = document.getElementById('transcriptModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
